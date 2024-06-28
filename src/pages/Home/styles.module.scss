@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 62px;
+
+  background-color: var(--observatory-600);
+}
+
+.image {
+  width: 450px;
+  height: 214px;
+
+  margin-top: 42px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 42px;
+
+  margin-top: 72px;
+}
+
+.button {
+  width: 658px;
+  height: 64px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background-color: var(--observatory-600);
+  color: var(--white);
+
+  font-size: 32px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.4s;
+}
+
+.button:hover {
+  background-color: #136953;
+}
+
+.footer {
+  width: 100%;
+  height: 62px;
+
+  background-color: var(--observatory-600);
+
+  margin-top: 289px;
+}
