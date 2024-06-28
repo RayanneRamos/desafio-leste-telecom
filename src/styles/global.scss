@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fff;
+  --white-100: #EFEFEF;
+  
+  --observatory-50: #EEFBF5;
+  --observatory-600: #1A8F6E;
+  --observatory-950: #072720;
+
+  --cardinal-700: #C80036;
+
+  --curious-blue-600: #008DDA;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
