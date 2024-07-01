@@ -12,18 +12,24 @@ export function ListContacts() {
       <div className={styles.filterContainer}>
         <form className={styles.filterForm}>
           <select className={styles.selectFilter}>
-            <option>Gender Filter</option>
+            <option value="" disabled selected>
+              Gender Filter
+            </option>
             <option>Masculino</option>
             <option>Feminino</option>
           </select>
           <select className={styles.selectFilter}>
-            <option>Language Filter</option>
+            <option value="" disabled selected>
+              Language Filter
+            </option>
             <option>Português</option>
             <option>Inglês</option>
             <option>Espanhol</option>
           </select>
           <select className={styles.selectFilter}>
-            <option>Age Filter</option>
+            <option value="" disabled selected>
+              Age Filter
+            </option>
             <option>Menor de 18 anos</option>
             <option>18 à 25 anos</option>
             <option>26 à 33 anos</option>
@@ -32,7 +38,9 @@ export function ListContacts() {
             <option>Maior de 50 anos</option>
           </select>
           <select className={styles.selectFilter}>
-            <option>Birthday Filter</option>
+            <option value="" disabled selected>
+              Birthday Filter
+            </option>
             <option>January</option>
             <option>February</option>
             <option>March</option>

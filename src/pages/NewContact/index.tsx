@@ -56,7 +56,9 @@ export function NewContact() {
           <div className={styles.inputSecondaryContainer}>
             <label className={styles.label}>Gênero:</label>
             <select className={styles.inputSecondary}>
-              <option disabled>Selecionar o gênero</option>
+              <option value="" disabled selected>
+                Selecionar o gênero
+              </option>
               <option>Masculino</option>
               <option>Feminino</option>
             </select>
@@ -64,7 +66,9 @@ export function NewContact() {
           <div className={styles.inputSecondaryContainer}>
             <label className={styles.label}>Idioma:</label>
             <select className={styles.inputSecondary}>
-              <option disabled>Selecionar o idioma</option>
+              <option value="" disabled selected>
+                Selecionar o idioma
+              </option>
               <option>Português</option>
               <option>Inglês</option>
               <option>Espanhol</option>

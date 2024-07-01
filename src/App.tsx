@@ -1,5 +1,9 @@
+//import { Home } from "./pages/Home";
+import { ListContacts } from "./pages/ListContacts";
+//import { NewContact } from "./pages/NewContact";
+
 export function App() {
-  return <h1>Hello World</h1>;
+  return <ListContacts />;
 }
 
 export default App;
