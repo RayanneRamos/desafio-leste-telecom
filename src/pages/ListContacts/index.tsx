@@ -6,6 +6,7 @@ import deleteSVG from "../../assets/delete.svg";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { ButtonSmall } from "../../components/ButtonSmall";
+import { SelectSmall } from "../../components/SelectSmall";
 
 export function ListContacts() {
   return (
@@ -14,22 +15,22 @@ export function ListContacts() {
       <img src={logoImage} className={styles.image} alt="Logo Leste Telecom" />
       <div className={styles.filterContainer}>
         <form className={styles.filterForm}>
-          <select className={styles.selectFilter}>
+          <SelectSmall>
             <option value="" disabled selected>
               Gender Filter
             </option>
             <option>Masculino</option>
             <option>Feminino</option>
-          </select>
-          <select className={styles.selectFilter}>
+          </SelectSmall>
+          <SelectSmall>
             <option value="" disabled selected>
               Language Filter
             </option>
             <option>Português</option>
             <option>Inglês</option>
             <option>Espanhol</option>
-          </select>
-          <select className={styles.selectFilter}>
+          </SelectSmall>
+          <SelectSmall>
             <option value="" disabled selected>
               Age Filter
             </option>
@@ -39,8 +40,8 @@ export function ListContacts() {
             <option>34 à 41 anos</option>
             <option>42 à 49 anos</option>
             <option>Maior de 50 anos</option>
-          </select>
-          <select className={styles.selectFilter}>
+          </SelectSmall>
+          <SelectSmall>
             <option value="" disabled selected>
               Birthday Filter
             </option>
@@ -56,7 +57,7 @@ export function ListContacts() {
             <option>October</option>
             <option>November</option>
             <option>December</option>
-          </select>
+          </SelectSmall>
         </form>
       </div>
       <div className={styles.counterContainer}>
