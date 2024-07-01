@@ -4,6 +4,7 @@ import userImage from "../../assets/user.png";
 import editSVG from "../../assets/edit.svg";
 import deleteSVG from "../../assets/delete.svg";
 import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 
 export function ListContacts() {
   return (
@@ -280,7 +281,7 @@ export function ListContacts() {
           </div>
         </div>
       </div>
-      <div className={styles.footer}></div>
+      <Footer />
     </div>
   );
 }

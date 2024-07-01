@@ -1,6 +1,7 @@
 import styles from "./styles.module.scss";
 import logoImage from "../../assets/logo.png";
 import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 
 export function NewContact() {
   return (
@@ -85,7 +86,7 @@ export function NewContact() {
           </button>
         </div>
       </form>
-      <div className={styles.footer}></div>
+      <Footer />
     </div>
   );
 }
