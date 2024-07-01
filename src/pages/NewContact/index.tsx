@@ -5,6 +5,7 @@ import { Footer } from "../../components/Footer";
 import { ButtonLarge } from "../../components/ButtonLarge";
 import { InputLarge } from "../../components/InputLarge";
 import { InputSmall } from "../../components/InputSmall";
+import { SelectMedium } from "../../components/SelectMedium";
 
 export function NewContact() {
   return (
@@ -43,24 +44,24 @@ export function NewContact() {
           </div>
           <div className={styles.inputSecondaryContainer}>
             <label className={styles.label}>Gênero:</label>
-            <select className={styles.inputSecondary}>
+            <SelectMedium>
               <option value="" disabled selected>
                 Selecionar o gênero
               </option>
               <option>Masculino</option>
               <option>Feminino</option>
-            </select>
+            </SelectMedium>
           </div>
           <div className={styles.inputSecondaryContainer}>
             <label className={styles.label}>Idioma:</label>
-            <select className={styles.inputSecondary}>
+            <SelectMedium>
               <option value="" disabled selected>
                 Selecionar o idioma
               </option>
               <option>Português</option>
               <option>Inglês</option>
               <option>Espanhol</option>
-            </select>
+            </SelectMedium>
           </div>
         </div>
         <div className={styles.buttonFormContainer}>
