@@ -3,6 +3,7 @@ import logoImage from "../../assets/logo.png";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { ButtonLarge } from "../../components/ButtonLarge";
+import { InputLarge } from "../../components/InputLarge";
 
 export function NewContact() {
   return (
@@ -14,34 +15,21 @@ export function NewContact() {
         <div className={styles.formFirstLine}>
           <div className={styles.inputPrimaryContainer}>
             <label className={styles.label}>Nome:</label>
-            <input
-              className={styles.inputPrimary}
-              type="text"
-              placeholder="John"
-            />
+            <InputLarge type="text" placeholder="John" />
           </div>
           <div className={styles.inputPrimaryContainer}>
             <label className={styles.label}>Sobrenome:</label>
-            <input
-              className={styles.inputPrimary}
-              type="text"
-              placeholder="Doe"
-            />
+            <InputLarge type="text" placeholder="Doe" />
           </div>
         </div>
         <div className={styles.formSecondLine}>
           <div className={styles.inputPrimaryContainer}>
             <label className={styles.label}>Email:</label>
-            <input
-              className={styles.inputPrimary}
-              type="text"
-              placeholder="johndoe@example.com"
-            />
+            <InputLarge type="text" placeholder="johndoe@example.com" />
           </div>
           <div className={styles.inputPrimaryContainer}>
             <label className={styles.label}>Foto:</label>
-            <input
-              className={styles.inputPrimary}
+            <InputLarge
               type="text"
               placeholder="https://github.com/RayanneRamos.png"
             />
