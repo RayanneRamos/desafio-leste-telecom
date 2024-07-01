@@ -1,12 +1,9 @@
 import styles from "./styles.module.scss";
 import logoImage from "../../assets/logo.png";
-import userImage from "../../assets/user.png";
-import editSVG from "../../assets/edit.svg";
-import deleteSVG from "../../assets/delete.svg";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
-import { ButtonSmall } from "../../components/ButtonSmall";
 import { SelectSmall } from "../../components/SelectSmall";
+import { CardContact } from "../../components/CardContact";
 
 export function ListContacts() {
   return (
@@ -73,32 +70,17 @@ export function ListContacts() {
       <div className={styles.main}>
         <h1 className={styles.titlePage}>Listar os contatos</h1>
         <div className={styles.listContactContainer}>
-          <div className={styles.cardContainer}>
-            <img src={userImage} alt="profile" className={styles.imageCard} />
-            <strong className={styles.cardName}>John Doe</strong>
-            <span className={styles.cardEmail}>johndoe@example.com</span>
-            <span className={styles.cardBirthday}>21/09/1997</span>
-            <span className={styles.cardGender}>Masculino</span>
-            <span className={styles.cardLanguage}>Português</span>
-            <div className={styles.buttonCardContainer}>
-              <ButtonSmall type="button" variant="edit">
-                <img
-                  src={editSVG}
-                  alt="edit icon"
-                  className={styles.imageButton}
-                />
-                Editar
-              </ButtonSmall>
-              <ButtonSmall type="button" variant="cancel">
-                <img
-                  src={deleteSVG}
-                  alt="delete icon"
-                  className={styles.imageButton}
-                />
-                Remover
-              </ButtonSmall>
-            </div>
-          </div>
+          <CardContact />
+          <CardContact />
+          <CardContact />
+          <CardContact />
+          <CardContact />
+          <CardContact />
+          <CardContact />
+          <CardContact />
+          <CardContact />
+          <CardContact />
+          <CardContact />
         </div>
       </div>
       <Footer />
