@@ -1,0 +1,190 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  height: 62px;
+
+  background-color: var(--observatory-600);
+}
+
+.image {
+  width: 450px;
+  height: 214px;
+
+  margin-top: 42px;
+}
+
+.title {
+  margin-top: 42px;
+
+  font-size: 58px;
+  font-weight: 700;
+
+  color: var(--observatory-600);
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  
+  margin-top: 62px;
+  gap: 32px;
+}
+
+.formFirstLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  gap: 40px;
+}
+
+.inputPrimaryContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.label {
+  font-size: 24px;
+  font-weight: 500;
+
+  margin-left: 12px;
+
+  color: var(--observatory-600);
+}
+
+.inputPrimary {
+  width: 658px;
+  height: 64px;
+
+  border: 2px solid var(--observatory-600);
+  border-radius: 8px;
+
+  background-color: var(--observatory-50);
+  
+  font-size: 18px;
+  color: var(--observatory-950);
+
+  padding: 12px;
+
+  &::placeholder {
+    color: var(--observatory-950);
+  }
+
+  &:focus {
+    outline: 1px solid var(--observatory-600);
+  } 
+}
+
+.formSecondLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  gap: 40px;
+}
+
+.formThirdLine {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 42px;
+}
+
+.inputSecondaryContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.inputSecondary {
+  width: 424px;
+  height: 64px;
+
+  border: 2px solid var(--observatory-600);
+  border-radius: 8px;
+
+  background-color: var(--observatory-50);
+  color: var(--observatory-950);
+
+  font-size: 18px;
+
+  padding: 12px;
+
+  &::placeholder {
+    color: var(--observatory-950);
+  }
+
+  &:focus {
+    outline: 1px solid var(--observatory-600);
+  }
+}
+
+.buttonFormContainer {
+  display: flex;
+  
+  gap: 40px;
+}
+
+.buttonSubmit {
+  width: 658px;
+  height: 64px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background-color: var(--observatory-600);
+  color: var(--white);
+
+  font-size: 38px;
+  font-weight: 700;
+
+  transition: all 0.4s;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #26a37e;
+  }
+}
+
+.buttonCancel {
+  width: 658px;
+  height: 64px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background-color: var(--cardinal-700);
+  color: var(--white);
+
+  font-size: 38px;
+  font-weight: 700;
+
+  transition: all 0.4s;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f60842;
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 62px;
+
+  background-color: var(--observatory-600);
+
+  margin-top: 72px;
+}
