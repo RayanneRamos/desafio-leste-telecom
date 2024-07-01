@@ -4,6 +4,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { ButtonLarge } from "../../components/ButtonLarge";
 import { InputLarge } from "../../components/InputLarge";
+import { InputSmall } from "../../components/InputSmall";
 
 export function NewContact() {
   return (
@@ -38,11 +39,7 @@ export function NewContact() {
         <div className={styles.formThirdLine}>
           <div className={styles.inputSecondaryContainer}>
             <label className={styles.label}>Aniversário:</label>
-            <input
-              className={styles.inputSecondary}
-              type="date"
-              placeholder="21/09/1997"
-            />
+            <InputSmall type="date" placeholder="21/09/1997" />
           </div>
           <div className={styles.inputSecondaryContainer}>
             <label className={styles.label}>Gênero:</label>
