@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import logoImage from "../../assets/logo.png";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { ButtonLarge } from "../../components/ButtonLarge";
 
 export function NewContact() {
   return (
@@ -78,12 +79,8 @@ export function NewContact() {
           </div>
         </div>
         <div className={styles.buttonFormContainer}>
-          <button className={styles.buttonSubmit} type="submit">
-            Adicionar
-          </button>
-          <button className={styles.buttonCancel} type="button">
-            Cancelar
-          </button>
+          <ButtonLarge title="Adicionar" />
+          <ButtonLarge title="Cancelar" variant="cancel" />
         </div>
       </form>
       <Footer />
