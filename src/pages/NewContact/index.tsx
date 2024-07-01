@@ -1,10 +1,11 @@
 import styles from "./styles.module.scss";
 import logoImage from "../../assets/logo.png";
+import { Header } from "../../components/Header";
 
 export function NewContact() {
   return (
     <div className={styles.container}>
-      <div className={styles.header}></div>
+      <Header />
       <img src={logoImage} className={styles.image} alt="Logo" />
       <h1 className={styles.title}>Adicionar um novo contato</h1>
       <form className={styles.formContainer}>

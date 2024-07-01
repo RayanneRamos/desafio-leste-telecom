@@ -3,11 +3,12 @@ import logoImage from "../../assets/logo.png";
 import userImage from "../../assets/user.png";
 import editSVG from "../../assets/edit.svg";
 import deleteSVG from "../../assets/delete.svg";
+import { Header } from "../../components/Header";
 
 export function ListContacts() {
   return (
     <div className={styles.container}>
-      <div className={styles.header}></div>
+      <Header />
       <img src={logoImage} className={styles.image} alt="Logo Leste Telecom" />
       <div className={styles.filterContainer}>
         <form className={styles.filterForm}>
