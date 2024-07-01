@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from "react";
-import "./styles.module.scss";
+import styles from "./styles.module.scss";
 
 interface InputLargeProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
@@ -7,5 +7,12 @@ interface InputLargeProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export function InputLarge({ type, placeholder, ...props }: InputLargeProps) {
-  return <input type={type} placeholder={placeholder} {...props} />;
+  return (
+    <input
+      className={styles.inputLarge}
+      type={type}
+      placeholder={placeholder}
+      {...props}
+    />
+  );
 }
