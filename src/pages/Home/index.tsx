@@ -10,8 +10,8 @@ export function Home() {
       <Header />
       <img src={logoImage} className={styles.image} alt="logo" />
       <div className={styles.buttonContainer}>
-        <ButtonLarge title="Listar os contatos" />
-        <ButtonLarge title="Adicionar um novo contato" />
+        <ButtonLarge title="Listar os contatos" variant="confirm" />
+        <ButtonLarge title="Adicionar um novo contato" variant="confirm" />
       </div>
       <div className={styles.footerContainer}>
         <Footer />

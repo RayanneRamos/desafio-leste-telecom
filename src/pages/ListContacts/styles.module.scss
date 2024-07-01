@@ -5,13 +5,6 @@
   justify-content: center;
 }
 
-.header {
-  width: 100%;
-  height: 62px;
-
-  background-color: var(--observatory-600);
-}
-
 .image {
   width: 450px;
   height: 214px;
@@ -27,26 +20,6 @@
   display: flex;
 
   gap: 20px;
-}
-
-.selectFilter {
-  width: 320px;
-  height: 64px;
-
-  border: 0;
-  border-radius: 8px;
-
-  background-color: var(--observatory-600);
-  color: var(--white);
-
-  font-size: 18px;
-  font-weight: 700;
-
-  padding: 12px;
-
-  &:focus {
-    outline: none;
-  }
 }
 
 .counterContainer {
@@ -112,128 +85,4 @@
   margin-top: 62px;
 
   margin-bottom: 72px;
-}
-
-.cardContainer {
-  width: 320px;
-  height: 480px;
-
-  border: 4px solid var(--observatory-600);
-  border-radius: 12px;
-
-  background-color: var(--white-100);
-  color: var(--observatory-600);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.imageCard {
-  width: 124px;
-  height: 124px;
-
-  border-radius: 8px;
-
-  margin-top: 24px;
-}
-
-.cardName {
-  margin-top: 24px;
-
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.cardEmail {
-  margin-top: 12px;
-
-  font-size: 24px;
-}
-
-.cardBirthday {
-  margin-top: 12px;
-
-  font-size: 24px;
-}
-
-.cardGender {
-  margin-top: 12px;
-
-  font-size: 24px;
-}
-
-.cardLanguage {
-  margin-top: 12px;
-
-  font-size: 24px;
-}
-
-.buttonCardContainer {
-  display: flex;
-
-  gap: 16px;
-
-  margin-top: 24px;
-}
-
-.cardButtonEdit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  width: 140px;
-  height: 64px;
-
-  border: 0;
-  border-radius: 8px;
-
-  background-color: var(--curious-blue-600);
-  color: var(--white);
-
-  font-size: 18px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: all 0.4s;
-
-  &:hover {
-    background-color: #0ca3eb;
-  }
-}
-
-.cardButtonDelete {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 140px;
-  height: 64px;
-
-  border: 0;
-  border-radius: 8px;
-
-  background-color: var(--cardinal-700);
-  color: var(--white);
-
-  font-size: 18px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: all 0.4s;
-
-  &:hover {
-    background-color: #f60842;
-  }
-}
-
-.footer {
-  width: 100%;
-  height: 62px;
-
-  background-color: var(--observatory-600);
-
-  margin-top: 72px;
 }

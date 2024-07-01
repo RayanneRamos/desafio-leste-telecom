@@ -8,18 +8,17 @@ button {
   font-size: 38px;
   font-weight: 700;
 
-  color: var(--white);
-
   cursor: pointer;
-  transition: all 0.4s;
 
-  background-color: var(--observatory-600);
-  color: var(--white);
-
-  transition: all 0.4s;
-
-  &:hover {
-    background-color: var(--button-hover-confirm);
+  &.buttonConfirm {
+    background-color: var(--observatory-600);
+    color: var(--white);
+  
+    transition: all 0.4s;
+  
+    &:hover {
+      background-color: var(--button-hover-confirm);
+    }
   }
 
   &.buttonCancel {

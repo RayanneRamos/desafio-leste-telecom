@@ -65,7 +65,7 @@ export function NewContact() {
           </div>
         </div>
         <div className={styles.buttonFormContainer}>
-          <ButtonLarge title="Adicionar" />
+          <ButtonLarge title="Adicionar" variant="confirm" />
           <ButtonLarge title="Cancelar" variant="cancel" />
         </div>
       </form>
