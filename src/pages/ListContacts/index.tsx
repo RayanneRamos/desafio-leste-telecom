@@ -5,6 +5,7 @@ import editSVG from "../../assets/edit.svg";
 import deleteSVG from "../../assets/delete.svg";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { ButtonSmall } from "../../components/ButtonSmall";
 
 export function ListContacts() {
   return (
@@ -79,204 +80,22 @@ export function ListContacts() {
             <span className={styles.cardGender}>Masculino</span>
             <span className={styles.cardLanguage}>Português</span>
             <div className={styles.buttonCardContainer}>
-              <button type="button" className={styles.cardButtonEdit}>
+              <ButtonSmall type="button" variant="edit">
                 <img
                   src={editSVG}
                   alt="edit icon"
                   className={styles.imageButton}
                 />
                 Editar
-              </button>
-              <button type="button" className={styles.cardButtonDelete}>
+              </ButtonSmall>
+              <ButtonSmall type="button" variant="cancel">
                 <img
                   src={deleteSVG}
                   alt="delete icon"
                   className={styles.imageButton}
                 />
                 Remover
-              </button>
-            </div>
-          </div>
-          <div className={styles.cardContainer}>
-            <img src={userImage} alt="profile" className={styles.imageCard} />
-            <strong className={styles.cardName}>John Doe</strong>
-            <span className={styles.cardEmail}>johndoe@example.com</span>
-            <span className={styles.cardBirthday}>21/09/1997</span>
-            <span className={styles.cardGender}>Masculino</span>
-            <span className={styles.cardLanguage}>Português</span>
-            <div className={styles.buttonCardContainer}>
-              <button type="button" className={styles.cardButtonEdit}>
-                <img
-                  src={editSVG}
-                  alt="edit icon"
-                  className={styles.imageButton}
-                />
-                Editar
-              </button>
-              <button type="button" className={styles.cardButtonDelete}>
-                <img
-                  src={deleteSVG}
-                  alt="delete icon"
-                  className={styles.imageButton}
-                />
-                Remover
-              </button>
-            </div>
-          </div>
-          <div className={styles.cardContainer}>
-            <img src={userImage} alt="profile" className={styles.imageCard} />
-            <strong className={styles.cardName}>John Doe</strong>
-            <span className={styles.cardEmail}>johndoe@example.com</span>
-            <span className={styles.cardBirthday}>21/09/1997</span>
-            <span className={styles.cardGender}>Masculino</span>
-            <span className={styles.cardLanguage}>Português</span>
-            <div className={styles.buttonCardContainer}>
-              <button type="button" className={styles.cardButtonEdit}>
-                <img
-                  src={editSVG}
-                  alt="edit icon"
-                  className={styles.imageButton}
-                />
-                Editar
-              </button>
-              <button type="button" className={styles.cardButtonDelete}>
-                <img
-                  src={deleteSVG}
-                  alt="delete icon"
-                  className={styles.imageButton}
-                />
-                Remover
-              </button>
-            </div>
-          </div>
-          <div className={styles.cardContainer}>
-            <img src={userImage} alt="profile" className={styles.imageCard} />
-            <strong className={styles.cardName}>John Doe</strong>
-            <span className={styles.cardEmail}>johndoe@example.com</span>
-            <span className={styles.cardBirthday}>21/09/1997</span>
-            <span className={styles.cardGender}>Masculino</span>
-            <span className={styles.cardLanguage}>Português</span>
-            <div className={styles.buttonCardContainer}>
-              <button type="button" className={styles.cardButtonEdit}>
-                <img
-                  src={editSVG}
-                  alt="edit icon"
-                  className={styles.imageButton}
-                />
-                Editar
-              </button>
-              <button type="button" className={styles.cardButtonDelete}>
-                <img
-                  src={deleteSVG}
-                  alt="delete icon"
-                  className={styles.imageButton}
-                />
-                Remover
-              </button>
-            </div>
-          </div>
-          <div className={styles.cardContainer}>
-            <img src={userImage} alt="profile" className={styles.imageCard} />
-            <strong className={styles.cardName}>John Doe</strong>
-            <span className={styles.cardEmail}>johndoe@example.com</span>
-            <span className={styles.cardBirthday}>21/09/1997</span>
-            <span className={styles.cardGender}>Masculino</span>
-            <span className={styles.cardLanguage}>Português</span>
-            <div className={styles.buttonCardContainer}>
-              <button type="button" className={styles.cardButtonEdit}>
-                <img
-                  src={editSVG}
-                  alt="edit icon"
-                  className={styles.imageButton}
-                />
-                Editar
-              </button>
-              <button type="button" className={styles.cardButtonDelete}>
-                <img
-                  src={deleteSVG}
-                  alt="delete icon"
-                  className={styles.imageButton}
-                />
-                Remover
-              </button>
-            </div>
-          </div>
-          <div className={styles.cardContainer}>
-            <img src={userImage} alt="profile" className={styles.imageCard} />
-            <strong className={styles.cardName}>John Doe</strong>
-            <span className={styles.cardEmail}>johndoe@example.com</span>
-            <span className={styles.cardBirthday}>21/09/1997</span>
-            <span className={styles.cardGender}>Masculino</span>
-            <span className={styles.cardLanguage}>Português</span>
-            <div className={styles.buttonCardContainer}>
-              <button type="button" className={styles.cardButtonEdit}>
-                <img
-                  src={editSVG}
-                  alt="edit icon"
-                  className={styles.imageButton}
-                />
-                Editar
-              </button>
-              <button type="button" className={styles.cardButtonDelete}>
-                <img
-                  src={deleteSVG}
-                  alt="delete icon"
-                  className={styles.imageButton}
-                />
-                Remover
-              </button>
-            </div>
-          </div>
-          <div className={styles.cardContainer}>
-            <img src={userImage} alt="profile" className={styles.imageCard} />
-            <strong className={styles.cardName}>John Doe</strong>
-            <span className={styles.cardEmail}>johndoe@example.com</span>
-            <span className={styles.cardBirthday}>21/09/1997</span>
-            <span className={styles.cardGender}>Masculino</span>
-            <span className={styles.cardLanguage}>Português</span>
-            <div className={styles.buttonCardContainer}>
-              <button type="button" className={styles.cardButtonEdit}>
-                <img
-                  src={editSVG}
-                  alt="edit icon"
-                  className={styles.imageButton}
-                />
-                Editar
-              </button>
-              <button type="button" className={styles.cardButtonDelete}>
-                <img
-                  src={deleteSVG}
-                  alt="delete icon"
-                  className={styles.imageButton}
-                />
-                Remover
-              </button>
-            </div>
-          </div>
-          <div className={styles.cardContainer}>
-            <img src={userImage} alt="profile" className={styles.imageCard} />
-            <strong className={styles.cardName}>John Doe</strong>
-            <span className={styles.cardEmail}>johndoe@example.com</span>
-            <span className={styles.cardBirthday}>21/09/1997</span>
-            <span className={styles.cardGender}>Masculino</span>
-            <span className={styles.cardLanguage}>Português</span>
-            <div className={styles.buttonCardContainer}>
-              <button type="button" className={styles.cardButtonEdit}>
-                <img
-                  src={editSVG}
-                  alt="edit icon"
-                  className={styles.imageButton}
-                />
-                Editar
-              </button>
-              <button type="button" className={styles.cardButtonDelete}>
-                <img
-                  src={deleteSVG}
-                  alt="delete icon"
-                  className={styles.imageButton}
-                />
-                Remover
-              </button>
+              </ButtonSmall>
             </div>
           </div>
         </div>
