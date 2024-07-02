@@ -1,18 +1,24 @@
 import styles from "./styles.module.scss";
-import userImage from "../../assets/user.png";
 import editSVG from "../../assets/edit.svg";
 import deleteSVG from "../../assets/delete.svg";
 import { ButtonSmall } from "../../components/ButtonSmall";
+import { ListContactProps } from "../../pages/ListContacts";
 
-export function CardContact() {
+interface CardContactProps {
+  data: ListContactProps;
+}
+
+export function CardContact({ data }: CardContactProps) {
   return (
     <div className={styles.cardContainer}>
-      <img src={userImage} alt="profile" className={styles.imageCard} />
-      <strong className={styles.cardName}>John Doe</strong>
-      <span className={styles.cardEmail}>johndoe@example.com</span>
-      <span className={styles.cardBirthday}>21/09/1997</span>
-      <span className={styles.cardGender}>Masculino</span>
-      <span className={styles.cardLanguage}>Português</span>
+      <img src={data.photo} alt={data.name} className={styles.imageCard} />
+      <strong className={styles.cardName}>
+        {data.name} {data.sobrenome}
+      </strong>
+      <span className={styles.cardEmail}>{data.email}</span>
+      <span className={styles.cardBirthday}>{data.birthDay}</span>
+      <span className={styles.cardGender}>{data.gender}</span>
+      <span className={styles.cardLanguage}>{data.language}</span>
       <div className={styles.buttonCardContainer}>
         <ButtonSmall type="button" variant="edit">
           <img src={editSVG} alt="edit icon" className={styles.imageButton} />
