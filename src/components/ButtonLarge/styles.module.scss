@@ -1,16 +1,16 @@
 button {
-  width: 658px;
-  height: 64px;
-
-  border: 0;
-  border-radius: 8px;
-
-  font-size: 38px;
-  font-weight: 700;
-
-  cursor: pointer;
-
   &.buttonConfirm {
+    width: 658px;
+    height: 64px;
+
+    border: 0;
+    border-radius: 8px;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    cursor: pointer;
+    
     background-color: var(--observatory-600);
     color: var(--white);
   
@@ -22,6 +22,17 @@ button {
   }
 
   &.buttonCancel {
+    width: 658px;
+    height: 64px;
+
+    border: 0;
+    border-radius: 8px;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    cursor: pointer;
+
     background-color: var(--cardinal-700);
     color: var(--white);
 
