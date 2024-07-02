@@ -6,12 +6,19 @@ import { ButtonLarge } from "../../components/ButtonLarge";
 import { InputLarge } from "../../components/InputLarge";
 import { InputSmall } from "../../components/InputSmall";
 import { SelectMedium } from "../../components/SelectMedium";
+import { Link } from "react-router-dom";
 
 export function NewContact() {
   return (
     <div className={styles.container}>
       <Header />
-      <img src={logoImage} className={styles.image} alt="Logo" />
+      <Link to="/">
+        <img
+          src={logoImage}
+          className={styles.image}
+          alt="Logo Leste Telecom"
+        />
+      </Link>
       <h1 className={styles.title}>Adicionar um novo contato</h1>
       <form className={styles.formContainer}>
         <div className={styles.formFirstLine}>

@@ -4,12 +4,19 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { SelectSmall } from "../../components/SelectSmall";
 import { CardContact } from "../../components/CardContact";
+import { Link } from "react-router-dom";
 
 export function ListContacts() {
   return (
     <div className={styles.container}>
       <Header />
-      <img src={logoImage} className={styles.image} alt="Logo Leste Telecom" />
+      <Link to="/">
+        <img
+          src={logoImage}
+          className={styles.image}
+          alt="Logo Leste Telecom"
+        />
+      </Link>
       <div className={styles.filterContainer}>
         <form className={styles.filterForm}>
           <SelectSmall>
