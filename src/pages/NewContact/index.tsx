@@ -7,6 +7,7 @@ import { InputLarge } from "../../components/InputLarge";
 import { InputSmall } from "../../components/InputSmall";
 import { SelectMedium } from "../../components/SelectMedium";
 import { Link } from "react-router-dom";
+import { LANGUAGES } from "../../utils/languages";
 
 export function NewContact() {
   return (
@@ -65,9 +66,13 @@ export function NewContact() {
               <option value="" disabled selected>
                 Selecionar o idioma
               </option>
-              <option>Português</option>
-              <option>Inglês</option>
-              <option>Espanhol</option>
+              {LANGUAGES.map((language) => {
+                return (
+                  <option id={language.id} value={language.language}>
+                    {language.language}
+                  </option>
+                );
+              })}
             </SelectMedium>
           </div>
         </div>

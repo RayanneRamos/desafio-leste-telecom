@@ -5,6 +5,9 @@ import { Footer } from "../../components/Footer";
 import { SelectSmall } from "../../components/SelectSmall";
 import { CardContact } from "../../components/CardContact";
 import { Link } from "react-router-dom";
+import { LANGUAGES } from "../../utils/languages";
+import { MONTHS } from "../../utils/months";
+import { AGES } from "../../utils/ages";
 
 export function ListContacts() {
   return (
@@ -30,37 +33,37 @@ export function ListContacts() {
             <option value="" disabled selected>
               Language Filter
             </option>
-            <option>Português</option>
-            <option>Inglês</option>
-            <option>Espanhol</option>
+            {LANGUAGES.map((language) => {
+              return (
+                <option id={language.id} value={language.language}>
+                  {language.language}
+                </option>
+              );
+            })}
           </SelectSmall>
           <SelectSmall>
             <option value="" disabled selected>
               Age Filter
             </option>
-            <option>Menor de 18 anos</option>
-            <option>18 à 25 anos</option>
-            <option>26 à 33 anos</option>
-            <option>34 à 41 anos</option>
-            <option>42 à 49 anos</option>
-            <option>Maior de 50 anos</option>
+            {AGES.map((age) => {
+              return (
+                <option id={age.id} value={age.age}>
+                  {age.age}
+                </option>
+              );
+            })}
           </SelectSmall>
           <SelectSmall>
             <option value="" disabled selected>
               Birthday Filter
             </option>
-            <option>January</option>
-            <option>February</option>
-            <option>March</option>
-            <option>April</option>
-            <option>May</option>
-            <option>June</option>
-            <option>July</option>
-            <option>August</option>
-            <option>September</option>
-            <option>October</option>
-            <option>November</option>
-            <option>December</option>
+            {MONTHS.map((month) => {
+              return (
+                <option id={month.id} value={month.month}>
+                  {month.month}
+                </option>
+              );
+            })}
           </SelectSmall>
         </form>
       </div>
