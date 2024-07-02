@@ -8,6 +8,18 @@ import { Link } from "react-router-dom";
 import { LANGUAGES } from "../../utils/languages";
 import { MONTHS } from "../../utils/months";
 import { AGES } from "../../utils/ages";
+import { CONTACTS } from "../../utils/contacts";
+
+export interface ListContactProps {
+  id: string;
+  name: string;
+  sobrenome?: string;
+  email: string;
+  birthDay: string;
+  language: string;
+  gender: string;
+  photo: string;
+}
 
 export function ListContacts() {
   return (
@@ -80,17 +92,9 @@ export function ListContacts() {
       <div className={styles.main}>
         <h1 className={styles.titlePage}>Listar os contatos</h1>
         <div className={styles.listContactContainer}>
-          <CardContact />
-          <CardContact />
-          <CardContact />
-          <CardContact />
-          <CardContact />
-          <CardContact />
-          <CardContact />
-          <CardContact />
-          <CardContact />
-          <CardContact />
-          <CardContact />
+          {CONTACTS.map((contact) => {
+            return <CardContact key={contact.id} data={contact} />;
+          })}
         </div>
       </div>
       <Footer />
