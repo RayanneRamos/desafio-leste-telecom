@@ -8,20 +8,22 @@ import { Link } from "react-router-dom";
 import { LANGUAGES } from "../../utils/languages";
 import { MONTHS } from "../../utils/months";
 import { AGES } from "../../utils/ages";
-import { CONTACTS } from "../../utils/contacts";
+import { useContacts } from "../../context/Contact";
 
 export interface ListContactProps {
   id: string;
-  name: string;
-  sobrenome?: string;
+  firstname: string;
+  lastname: string;
   email: string;
-  birthDay: string;
+  birthday: string;
   language: string;
   gender: string;
   photo: string;
 }
 
 export function ListContacts() {
+  const { contacts } = useContacts();
+
   return (
     <div className={styles.container}>
       <Header />
@@ -92,7 +94,7 @@ export function ListContacts() {
       <div className={styles.main}>
         <h1 className={styles.titlePage}>Listar os contatos</h1>
         <div className={styles.listContactContainer}>
-          {CONTACTS.map((contact) => {
+          {contacts.map((contact) => {
             return <CardContact key={contact.id} data={contact} />;
           })}
         </div>
