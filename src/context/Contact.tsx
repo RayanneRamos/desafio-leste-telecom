@@ -1,0 +1,54 @@
+// src/context/ContactContext.tsx
+import { createContext, useState, useContext, ReactNode } from "react";
+import { Contact } from "../types/types";
+
+interface ContactContextProps {
+  contacts: Contact[];
+  addContact: (contact: Contact) => void;
+  updateContact: (contact: Contact) => void;
+  deleteContact: (id: string) => void;
+}
+
+interface ContactContextProviderProps {
+  children: ReactNode;
+}
+
+const ContactContext = createContext<ContactContextProps | undefined>(
+  undefined
+);
+
+export const ContactProvider = ({ children }: ContactContextProviderProps) => {
+  const [contacts, setContacts] = useState<Contact[]>([]);
+
+  const addContact = (contact: Contact) => {
+    setContacts([...contacts, contact]);
+  };
+
+  const updateContact = (updatedContact: Contact) => {
+    setContacts(
+      contacts.map((contact) =>
+        contact.id === updatedContact.id ? updatedContact : contact
+      )
+    );
+  };
+
+  const deleteContact = (id: string) => {
+    setContacts(contacts.filter((contact) => contact.id !== id));
+  };
+
+  return (
+    <ContactContext.Provider
+      value={{ contacts, addContact, updateContact, deleteContact }}
+    >
+      {children}
+    </ContactContext.Provider>
+  );
+};
+
+export const useContacts = (): ContactContextProps => {
+  const context = useContext(ContactContext);
+  if (!context) {
+    throw new Error("useContacts must be used within a ContactProvider");
+  }
+  return context;
+};
