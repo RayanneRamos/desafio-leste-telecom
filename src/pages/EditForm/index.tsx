@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Header } from "../../components/Header";
 import styles from "./styles.module.scss";
 import logoImage from "../../assets/logo.png";
@@ -7,11 +7,13 @@ import { InputSmall } from "../../components/InputSmall";
 import { SelectMedium } from "../../components/SelectMedium";
 import { LANGUAGES } from "../../utils/languages";
 import { ButtonLarge } from "../../components/ButtonLarge";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage } from "../../components/ErrorMessage";
+import { useContacts } from "../../context/Contact";
+import { Contact } from "../../types/types";
 
 const languagesValues = LANGUAGES.map((language) => language.language);
 
@@ -43,23 +45,54 @@ export function EditForm() {
   const [email, setEmail] = useState("");
   const [photo, setPhoto] = useState("");
   const [birthday, setBirthday] = useState("");
+
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const { contacts, updateContact } = useContacts();
+  const contact = contacts.find((contact) => contact.id === id);
+
+  if (!contact) {
+    navigate("/");
+    return null;
+  }
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    // eslint-disable-next-line react-hooks/rules-of-hooks
   } = useForm<EditFormData>({
     resolver: zodResolver(EditFormSchema),
+    defaultValues: {
+      firstname: contact.firstname,
+      lastname: contact.lastname,
+      email: contact.email,
+      photo: contact.photo,
+      birthday: contact.birthday,
+      gender: contact.gender,
+      language: contact.language,
+    },
   });
-  const navigate = useNavigate();
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    setFirstName(contact.firstname || "");
+    setLastName(contact.lastname || "");
+    setEmail(contact.email || "");
+    setPhoto(contact.photo || "");
+    setBirthday(contact.birthday || "");
+  }, [contact]);
 
   function handleSaveEditContact(data: EditFormData) {
-    console.log(data);
+    const updatedContact: Contact = {
+      ...contact,
+      ...data,
+      id: contact?.id,
+    };
 
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhoto("");
-    setBirthday("");
+    updateContact(updatedContact);
+
+    navigate("/listcontact");
   }
 
   function handleCancelEditContact() {
