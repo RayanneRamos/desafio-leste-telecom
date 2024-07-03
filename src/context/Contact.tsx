@@ -1,5 +1,11 @@
 // src/context/ContactContext.tsx
-import { createContext, useState, useContext, ReactNode } from "react";
+import {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 import { Contact } from "../types/types";
 
 interface ContactContextProps {
@@ -18,7 +24,14 @@ const ContactContext = createContext<ContactContextProps | undefined>(
 );
 
 export const ContactProvider = ({ children }: ContactContextProviderProps) => {
-  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [contacts, setContacts] = useState<Contact[]>(() => {
+    const storedContacts = localStorage.getItem("contacts");
+    return storedContacts ? JSON.parse(storedContacts) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   const addContact = (contact: Contact) => {
     setContacts([...contacts, contact]);
@@ -45,6 +58,7 @@ export const ContactProvider = ({ children }: ContactContextProviderProps) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useContacts = (): ContactContextProps => {
   const context = useContext(ContactContext);
   if (!context) {
