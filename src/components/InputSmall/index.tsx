@@ -1,18 +1,21 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 import styles from "./styles.module.scss";
 
-interface InputSmallProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
   placeholder: string;
 }
 
-export function InputSmall({ type, placeholder, ...props }: InputSmallProps) {
-  return (
-    <input
-      className={styles.inputSmall}
-      type={type}
-      placeholder={placeholder}
-      {...props}
-    />
-  );
-}
+export const InputSmall = forwardRef<HTMLInputElement, InputProps>(
+  ({ type, placeholder, ...rest }, ref) => {
+    return (
+      <input
+        className={styles.inputSmall}
+        type={type}
+        placeholder={placeholder}
+        ref={ref}
+        {...rest}
+      />
+    );
+  }
+);

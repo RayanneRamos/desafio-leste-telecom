@@ -1,18 +1,21 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 import styles from "./styles.module.scss";
 
-interface InputLargeProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
   placeholder: string;
 }
 
-export function InputLarge({ type, placeholder, ...props }: InputLargeProps) {
-  return (
-    <input
-      className={styles.inputLarge}
-      type={type}
-      placeholder={placeholder}
-      {...props}
-    />
-  );
-}
+export const InputLarge = forwardRef<HTMLInputElement, InputProps>(
+  ({ type, placeholder, ...rest }, ref) => {
+    return (
+      <input
+        className={styles.inputLarge}
+        type={type}
+        placeholder={placeholder}
+        ref={ref}
+        {...rest}
+      />
+    );
+  }
+);
