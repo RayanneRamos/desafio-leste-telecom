@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import styles from "./styles.module.scss";
 import logoImage from "../../assets/logo.png";
@@ -8,6 +8,34 @@ import { SelectMedium } from "../../components/SelectMedium";
 import { LANGUAGES } from "../../utils/languages";
 import { ButtonLarge } from "../../components/ButtonLarge";
 import { useState } from "react";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ErrorMessage } from "../../components/ErrorMessage";
+
+const languagesValues = LANGUAGES.map((language) => language.language);
+
+const EditFormSchema = z.object({
+  firstname: z
+    .string()
+    .min(3, { message: "O nome deve conter no mínimo 3 caracteres" }),
+  lastname: z
+    .string()
+    .min(3, { message: "O sobrenome deve conter no mínimo 3 caracteres." }),
+  email: z.string().email({ message: "O email é obrigatório." }),
+  photo: z.string().url({ message: "A imagem deve ser uma url do navegador." }),
+  birthday: z
+    .string()
+    .min(1, { message: "A data de aniversário é obrigatória." }),
+  gender: z.enum(["Masculino", "Feminino"], {
+    message: "O gênero é obrigatório.",
+  }),
+  language: z.enum(languagesValues as [string, ...string[]], {
+    message: "O idioma é obrigatório.",
+  }),
+});
+
+type EditFormData = z.infer<typeof EditFormSchema>;
 
 export function EditForm() {
   const [firstName, setFirstName] = useState("");
@@ -15,8 +43,28 @@ export function EditForm() {
   const [email, setEmail] = useState("");
   const [photo, setPhoto] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [gender, setGender] = useState("");
-  const [language, setLanguage] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<EditFormData>({
+    resolver: zodResolver(EditFormSchema),
+  });
+  const navigate = useNavigate();
+
+  function handleSaveEditContact(data: EditFormData) {
+    console.log(data);
+
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhoto("");
+    setBirthday("");
+  }
+
+  function handleCancelEditContact() {
+    navigate("/listcontact");
+  }
 
   return (
     <div className={styles.container}>
@@ -29,7 +77,10 @@ export function EditForm() {
         />
       </Link>
       <h1 className={styles.title}>Editar o contato</h1>
-      <form className={styles.formContainer}>
+      <form
+        className={styles.formContainer}
+        onSubmit={handleSubmit(handleSaveEditContact)}
+      >
         <div className={styles.formFirstLine}>
           <div className={styles.inputPrimaryContainer}>
             <label className={styles.label}>Nome:</label>
@@ -37,8 +88,12 @@ export function EditForm() {
               type="text"
               placeholder="John"
               value={firstName}
+              {...register("firstname")}
               onChange={(event) => setFirstName(event.target.value)}
             />
+            {errors.firstname && (
+              <ErrorMessage>{errors.firstname.message}</ErrorMessage>
+            )}
           </div>
           <div className={styles.inputPrimaryContainer}>
             <label className={styles.label}>Sobrenome:</label>
@@ -46,8 +101,12 @@ export function EditForm() {
               type="text"
               placeholder="Doe"
               value={lastName}
+              {...register("lastname")}
               onChange={(event) => setLastName(event.target.value)}
             />
+            {errors.lastname && (
+              <ErrorMessage>{errors.lastname.message}</ErrorMessage>
+            )}
           </div>
         </div>
         <div className={styles.formSecondLine}>
@@ -57,8 +116,12 @@ export function EditForm() {
               type="text"
               placeholder="johndoe@example.com"
               value={email}
+              {...register("email")}
               onChange={(event) => setEmail(event.target.value)}
             />
+            {errors.email && (
+              <ErrorMessage>{errors.email.message}</ErrorMessage>
+            )}
           </div>
           <div className={styles.inputPrimaryContainer}>
             <label className={styles.label}>Foto:</label>
@@ -66,8 +129,12 @@ export function EditForm() {
               type="text"
               placeholder="https://github.com/RayanneRamos.png"
               value={photo}
+              {...register("photo")}
               onChange={(event) => setPhoto(event.target.value)}
             />
+            {errors.photo && (
+              <ErrorMessage>{errors.photo.message}</ErrorMessage>
+            )}
           </div>
         </div>
         <div className={styles.formThirdLine}>
@@ -77,29 +144,27 @@ export function EditForm() {
               type="date"
               placeholder="21/09/1997"
               value={birthday}
+              {...register("birthday")}
               onChange={(event) => setBirthday(event.target.value)}
             />
+            {errors.birthday && (
+              <ErrorMessage>{errors.birthday.message}</ErrorMessage>
+            )}
           </div>
           <div className={styles.inputSecondaryContainer}>
             <label className={styles.label}>Gênero:</label>
-            <SelectMedium
-              value={gender}
-              onChange={(event) => setGender(event.target.value)}
-            >
-              <option value="" disabled selected>
+            <SelectMedium defaultValue="">
+              <option value="" disabled defaultChecked>
                 Selecionar o gênero
               </option>
-              <option>Masculino</option>
-              <option>Feminino</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
             </SelectMedium>
           </div>
           <div className={styles.inputSecondaryContainer}>
             <label className={styles.label}>Idioma:</label>
-            <SelectMedium
-              value={language}
-              onChange={(event) => setLanguage(event.target.value)}
-            >
-              <option value="" disabled selected>
+            <SelectMedium defaultValue="">
+              <option value="" disabled defaultChecked>
                 Selecionar o idioma
               </option>
               {LANGUAGES.map((language) => {
@@ -113,8 +178,13 @@ export function EditForm() {
           </div>
         </div>
         <div className={styles.buttonFormContainer}>
-          <ButtonLarge title="Salvar" variant="confirm" />
-          <ButtonLarge title="Cancelar" variant="cancel" />
+          <ButtonLarge type="submit" title="Salvar" variant="confirm" />
+          <ButtonLarge
+            onClick={handleCancelEditContact}
+            type="button"
+            title="Cancelar"
+            variant="cancel"
+          />
         </div>
       </form>
     </div>
