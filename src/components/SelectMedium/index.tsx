@@ -1,8 +1,16 @@
-import { SelectHTMLAttributes } from "react";
+import { SelectHTMLAttributes, forwardRef } from "react";
 import styles from "./styles.module.scss";
 
 interface SelectMediumProps extends SelectHTMLAttributes<HTMLSelectElement> {}
 
-export function SelectMedium({ ...props }: SelectMediumProps) {
-  return <select className={styles.selectMedium} {...props}></select>;
-}
+const SelectMedium = forwardRef<HTMLSelectElement, SelectMediumProps>(
+  ({ ...props }, ref) => {
+    return (
+      <select ref={ref} className={styles.selectMedium} {...props}></select>
+    );
+  }
+);
+
+SelectMedium.displayName = "SelectMedium";
+
+export { SelectMedium };
