@@ -38,12 +38,15 @@ export function CardContact({ data }: CardContactProps) {
           />
           Editar
         </ButtonSmall>
-        <ButtonSmall type="button" variant="cancel">
+        <ButtonSmall
+          type="button"
+          variant="cancel"
+          onClick={() => deleteContact(data.id)}
+        >
           <img
             src={deleteSVG}
             alt="delete icon"
             className={styles.imageButton}
-            onClick={() => deleteContact(data.id)}
           />
           Remover
         </ButtonSmall>
