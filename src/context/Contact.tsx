@@ -7,6 +7,7 @@ import {
   useEffect,
 } from "react";
 import { Contact } from "../types/types";
+import dayjs from "dayjs";
 
 interface ContactContextProps {
   contacts: Contact[];
@@ -34,7 +35,12 @@ export const ContactProvider = ({ children }: ContactContextProviderProps) => {
   }, [contacts]);
 
   const addContact = (contact: Contact) => {
-    setContacts([...contacts, contact]);
+    const formattedContact = {
+      ...contact,
+      birthday: dayjs(contact.birthday).format("DD/MM/YYYY"),
+    };
+
+    setContacts([...contacts, formattedContact]);
   };
 
   const updateContact = (updatedContact: Contact) => {
