@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { ButtonLarge } from "../../components/ButtonLarge";
 import { SelectMedium } from "../../components/SelectMedium";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LANGUAGES } from "../../utils/languages";
 import { useState } from "react";
 import { z } from "zod";
@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { InputLarge } from "../../components/InputLarge";
 import { InputSmall } from "../../components/InputSmall";
+import { useContacts } from "../../context/Contact";
 
 const languagesValues = LANGUAGES.map((language) => language.language);
 
@@ -51,15 +52,17 @@ export function NewContact() {
   } = useForm<NewContactFormData>({
     resolver: zodResolver(NewContactSchema),
   });
+  const navigate = useNavigate();
+  const { addContact } = useContacts();
 
   function handleSubmitAddNewContact(data: NewContactFormData) {
-    console.log(data);
+    const newContact = { id: String(Date.now()), ...data };
+    addContact(newContact);
+    navigate("/");
+  }
 
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhoto("");
-    setBirthday("");
+  function handleCancelAddNewContact() {
+    navigate("/");
   }
 
   return (
@@ -181,7 +184,12 @@ export function NewContact() {
         </div>
         <div className={styles.buttonFormContainer}>
           <ButtonLarge type="submit" title="Adicionar" variant="confirm" />
-          <ButtonLarge type="button" title="Cancelar" variant="cancel" />
+          <ButtonLarge
+            onClick={handleCancelAddNewContact}
+            type="button"
+            title="Cancelar"
+            variant="cancel"
+          />
         </div>
       </form>
       <Footer />
