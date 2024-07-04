@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ListContactProps } from "../pages/ListContacts";
 import { calculateAge } from "../utils/calculateAge";
+import { AGES } from "../utils/ages";
 
 interface UseFiltersReturn {
   genderFilter: string;
@@ -20,19 +21,47 @@ export function useFilters(contacts: ListContactProps[]): UseFiltersReturn {
   const [ageFilter, setAgeFilter] = useState("");
   const [birthdayMonthFilter, setBirthdayMonthFilter] = useState("");
 
-  const filteredContacts = contacts.filter((contact) => {
+  function getAgeRange(ageValue: string) {
+    const ageRange = AGES.find((age) => age.value === ageValue)?.age;
+
+    if (ageRange) {
+      const [minAge, maxAge] = ageRange.split(" à ").map(Number);
+      return { minAge, maxAge: maxAge || 200 };
+    }
+
+    return { minAge: 0, maxAge: 200 };
+  }
+
+  const filterByGender = (contact: ListContactProps) => {
+    return genderFilter === "" || contact.gender === genderFilter;
+  };
+
+  const filterByLanguage = (contact: ListContactProps) => {
+    return languageFilter === "" || contact.language === languageFilter;
+  };
+
+  const filterByAge = (contact: ListContactProps) => {
     const age = calculateAge(contact.birthday);
-    const birthdayMonth = new Date(contact.birthday).toLocaleString("pt-br", {
+    const { minAge, maxAge } = getAgeRange(ageFilter);
+    return ageFilter === "" || (age >= minAge && age <= maxAge);
+  };
+
+  const filterByBirthdayMonth = (contact: ListContactProps) => {
+    const birthdayMonth = new Date(contact.birthday).toLocaleString("en-us", {
       month: "long",
     });
 
     return (
-      (genderFilter === "" || contact.gender == genderFilter) &&
-      (languageFilter === "" || contact.language === languageFilter) &&
-      (ageFilter === "" || age.toString() === ageFilter) &&
-      (birthdayMonthFilter === "" || birthdayMonth === birthdayMonthFilter)
+      birthdayMonthFilter === "" ||
+      birthdayMonth.toLowerCase() === birthdayMonthFilter.toLowerCase()
     );
-  });
+  };
+
+  const filteredContacts = contacts
+    .filter(filterByGender)
+    .filter(filterByLanguage)
+    .filter(filterByAge)
+    .filter(filterByBirthdayMonth);
 
   return {
     genderFilter,
