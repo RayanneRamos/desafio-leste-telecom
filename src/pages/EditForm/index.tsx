@@ -87,7 +87,7 @@ export function EditForm() {
     const updatedContact: Contact = {
       ...contact,
       ...data,
-      id: contact?.id,
+      id: contact?.id !== undefined ? contact.id : "",
     };
 
     updateContact(updatedContact);
