@@ -9,6 +9,7 @@ import { LANGUAGES } from "../../utils/languages";
 import { MONTHS } from "../../utils/months";
 import { AGES } from "../../utils/ages";
 import { useContacts } from "../../context/Contact";
+import { useFilters } from "../../hooks/useFilters";
 
 export interface ListContactProps {
   id: string;
@@ -23,6 +24,17 @@ export interface ListContactProps {
 
 export function ListContacts() {
   const { contacts } = useContacts();
+  const {
+    ageFilter,
+    birthdayMonthFilter,
+    filteredContacts,
+    genderFilter,
+    languageFilter,
+    setAgeFilter,
+    setBirthdayMonthFilter,
+    setGenderFilter,
+    setLanguageFilter,
+  } = useFilters(contacts);
 
   return (
     <div className={styles.container}>
@@ -36,14 +48,20 @@ export function ListContacts() {
       </Link>
       <div className={styles.filterContainer}>
         <form className={styles.filterForm}>
-          <SelectSmall>
+          <SelectSmall
+            value={genderFilter}
+            onChange={(event) => setGenderFilter(event.target.value)}
+          >
             <option value="" disabled selected>
               Gender Filter
             </option>
             <option>Masculino</option>
             <option>Feminino</option>
           </SelectSmall>
-          <SelectSmall>
+          <SelectSmall
+            value={languageFilter}
+            onChange={(event) => setLanguageFilter(event.target.value)}
+          >
             <option value="" disabled selected>
               Language Filter
             </option>
@@ -55,7 +73,10 @@ export function ListContacts() {
               );
             })}
           </SelectSmall>
-          <SelectSmall>
+          <SelectSmall
+            value={ageFilter}
+            onChange={(event) => setAgeFilter(event.target.value)}
+          >
             <option value="" disabled selected>
               Age Filter
             </option>
@@ -67,7 +88,10 @@ export function ListContacts() {
               );
             })}
           </SelectSmall>
-          <SelectSmall>
+          <SelectSmall
+            value={birthdayMonthFilter}
+            onChange={(event) => setBirthdayMonthFilter(event.target.value)}
+          >
             <option value="" disabled selected>
               Birthday Filter
             </option>
@@ -84,17 +108,17 @@ export function ListContacts() {
       <div className={styles.counterContainer}>
         <div className={styles.infoDetails}>
           <span className={styles.titleInfo}>Gender Counter:</span>
-          <span className={styles.numberInfo}>28</span>
+          <span className={styles.numberInfo}>{filteredContacts.length}</span>
         </div>
         <div className={styles.infoDetails}>
           <span className={styles.titleInfo}>Language Counter:</span>
-          <span className={styles.numberInfo}>28</span>
+          <span className={styles.numberInfo}>{filteredContacts.length}</span>
         </div>
       </div>
       <div className={styles.main}>
         <h1 className={styles.titlePage}>Listar os contatos</h1>
         <div className={styles.listContactContainer}>
-          {contacts.map((contact) => {
+          {filteredContacts.map((contact) => {
             return <CardContact key={contact.id} data={contact} />;
           })}
         </div>
