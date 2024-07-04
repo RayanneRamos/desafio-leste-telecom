@@ -68,6 +68,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .titlePage {
   margin-top: 46px;
 
@@ -75,6 +76,15 @@
   font-weight: 700;
 
   color: var(--observatory-600);
+}
+
+.emptyListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 52px;
 }
 
 .listContactContainer {

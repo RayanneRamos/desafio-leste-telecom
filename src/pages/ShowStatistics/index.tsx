@@ -17,12 +17,11 @@ interface LanguageStatistic {
 export function ShowStatistics() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { filteredGenderStatistics } = location.state || {
-    filteredGenderStatistics: [],
-  };
-  const { filteredLanguageStatistics } = location.state || {
-    filteredLanguageStatistics: [],
-  };
+  const { filteredGenderStatistics, filteredLanguageStatistics } =
+    location.state || {
+      filteredGenderStatistics: [],
+      filteredLanguageStatistics: [],
+    };
 
   function handleGoBackListContatcs() {
     navigate("/listcontact");

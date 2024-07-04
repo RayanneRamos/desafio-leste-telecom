@@ -11,6 +11,7 @@ import { AGES } from "../../utils/ages";
 import { useContacts } from "../../context/Contact";
 import { useFilters } from "../../hooks/useFilters";
 import { ButtonLarge } from "../../components/ButtonLarge";
+import { EmptyList } from "../../components/EmptyList";
 
 export interface ListContactProps {
   id: string;
@@ -66,8 +67,8 @@ export function ListContacts() {
             <option value="" disabled selected>
               Gender Filter
             </option>
-            <option>Masculino</option>
-            <option>Feminino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
           </SelectSmall>
           <SelectSmall
             value={languageFilter}
@@ -130,11 +131,20 @@ export function ListContacts() {
       </div>
       <div className={styles.main}>
         <h1 className={styles.titlePage}>Listar os contatos</h1>
-        <div className={styles.listContactContainer}>
-          {filteredContacts.map((contact) => {
-            return <CardContact key={contact.id} data={contact} />;
-          })}
-        </div>
+
+        {filteredContacts.length === 0 ? (
+          <div className={styles.emptyListContainer}>
+            <EmptyList />
+          </div>
+        ) : (
+          filteredContacts.map((contact) => {
+            return (
+              <div className={styles.listContactContainer}>
+                <CardContact key={contact.id} data={contact} />
+              </div>
+            );
+          })
+        )}
       </div>
       <Footer />
     </div>
