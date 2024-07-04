@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { SelectSmall } from "../../components/SelectSmall";
 import { CardContact } from "../../components/CardContact";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LANGUAGES } from "../../utils/languages";
 import { MONTHS } from "../../utils/months";
 import { AGES } from "../../utils/ages";
@@ -37,6 +37,11 @@ export function ListContacts() {
     setLanguageFilter,
     clearFilters,
   } = useFilters(contacts);
+  const navigate = useNavigate();
+
+  function handleGoStatistics() {
+    navigate("/showstatistics");
+  }
 
   return (
     <div className={styles.container}>
@@ -113,7 +118,11 @@ export function ListContacts() {
           variant="edit"
           onClick={clearFilters}
         />
-        <ButtonLarge title="Ver as estatísticas" variant="confirm" />
+        <ButtonLarge
+          title="Ver as estatísticas"
+          variant="confirm"
+          onClick={handleGoStatistics}
+        />
       </div>
       <div className={styles.main}>
         <h1 className={styles.titlePage}>Listar os contatos</h1>
