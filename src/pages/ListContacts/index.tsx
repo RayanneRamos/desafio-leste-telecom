@@ -67,7 +67,7 @@ export function ListContacts() {
             </option>
             {LANGUAGES.map((language) => {
               return (
-                <option id={language.id} value={language.language}>
+                <option id={language.id} value={language.value}>
                   {language.language}
                 </option>
               );
@@ -82,7 +82,7 @@ export function ListContacts() {
             </option>
             {AGES.map((age) => {
               return (
-                <option id={age.id} value={age.age}>
+                <option id={age.id} value={age.value}>
                   {age.age}
                 </option>
               );
@@ -97,7 +97,7 @@ export function ListContacts() {
             </option>
             {MONTHS.map((month) => {
               return (
-                <option id={month.id} value={month.month}>
+                <option id={month.id} value={month.value}>
                   {month.month}
                 </option>
               );
