@@ -10,6 +10,7 @@ import { MONTHS } from "../../utils/months";
 import { AGES } from "../../utils/ages";
 import { useContacts } from "../../context/Contact";
 import { useFilters } from "../../hooks/useFilters";
+import { ButtonLarge } from "../../components/ButtonLarge";
 
 export interface ListContactProps {
   id: string;
@@ -34,6 +35,7 @@ export function ListContacts() {
     setBirthdayMonthFilter,
     setGenderFilter,
     setLanguageFilter,
+    clearFilters,
   } = useFilters(contacts);
 
   return (
@@ -106,14 +108,12 @@ export function ListContacts() {
         </form>
       </div>
       <div className={styles.counterContainer}>
-        <div className={styles.infoDetails}>
-          <span className={styles.titleInfo}>Gender Counter:</span>
-          <span className={styles.numberInfo}>{filteredContacts.length}</span>
-        </div>
-        <div className={styles.infoDetails}>
-          <span className={styles.titleInfo}>Language Counter:</span>
-          <span className={styles.numberInfo}>{filteredContacts.length}</span>
-        </div>
+        <ButtonLarge
+          title="Limpar os filtros"
+          variant="edit"
+          onClick={clearFilters}
+        />
+        <ButtonLarge title="Ver as estatísticas" variant="confirm" />
       </div>
       <div className={styles.main}>
         <h1 className={styles.titlePage}>Listar os contatos</h1>
