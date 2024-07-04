@@ -13,6 +13,7 @@ interface UseFiltersReturn {
   birthdayMonthFilter: string;
   setBirthdayMonthFilter: (value: string) => void;
   filteredContacts: ListContactProps[];
+  clearFilters: () => void;
 }
 
 export function useFilters(contacts: ListContactProps[]): UseFiltersReturn {
@@ -63,6 +64,13 @@ export function useFilters(contacts: ListContactProps[]): UseFiltersReturn {
     .filter(filterByAge)
     .filter(filterByBirthdayMonth);
 
+  const clearFilters = () => {
+    setGenderFilter("");
+    setLanguageFilter("");
+    setAgeFilter("");
+    setBirthdayMonthFilter("");
+  };
+
   return {
     genderFilter,
     setGenderFilter,
@@ -73,5 +81,6 @@ export function useFilters(contacts: ListContactProps[]): UseFiltersReturn {
     birthdayMonthFilter,
     setBirthdayMonthFilter,
     filteredContacts,
+    clearFilters,
   };
 }
