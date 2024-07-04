@@ -2,10 +2,27 @@ import { Header } from "../../components/Header";
 import styles from "./styles.module.scss";
 import logoImage from "../../assets/logo.png";
 import { Footer } from "../../components/Footer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+interface GenderStatistic {
+  gender: string;
+  count: number;
+}
+
+interface LanguageStatistic {
+  language: string;
+  count: number;
+}
 
 export function ShowStatistics() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { filteredGenderStatistics } = location.state || {
+    filteredGenderStatistics: [],
+  };
+  const { filteredLanguageStatistics } = location.state || {
+    filteredLanguageStatistics: [],
+  };
 
   function handleGoBackListContatcs() {
     navigate("/listcontact");
@@ -34,14 +51,14 @@ export function ShowStatistics() {
               <th>Gêneros</th>
               <th>Números</th>
             </tr>
-            <tr className={styles.tableColumn}>
-              <td>Masculino</td>
-              <td>20</td>
-            </tr>
-            <tr className={styles.tableColumn}>
-              <td>Feminino</td>
-              <td>20</td>
-            </tr>
+            {filteredGenderStatistics.map(
+              (genderStatistic: GenderStatistic) => (
+                <tr key={genderStatistic.gender} className={styles.tableColumn}>
+                  <td>{genderStatistic.gender}</td>
+                  <td>{genderStatistic.count}</td>
+                </tr>
+              )
+            )}
           </table>
         </div>
         <div className={styles.languageStatisticsContainer}>
@@ -55,26 +72,17 @@ export function ShowStatistics() {
               <th>Idiomas</th>
               <th>Números</th>
             </tr>
-            <tr className={styles.tableColumn}>
-              <td>Português</td>
-              <td>20</td>
-            </tr>
-            <tr className={styles.tableColumn}>
-              <td>Inglês</td>
-              <td>20</td>
-            </tr>
-            <tr className={styles.tableColumn}>
-              <td>Espanhol</td>
-              <td>20</td>
-            </tr>
-            <tr className={styles.tableColumn}>
-              <td>Francês</td>
-              <td>20</td>
-            </tr>
-            <tr className={styles.tableColumn}>
-              <td>Alemão</td>
-              <td>20</td>
-            </tr>
+            {filteredLanguageStatistics.map(
+              (languageStatistic: LanguageStatistic) => (
+                <tr
+                  key={languageStatistic.language}
+                  className={styles.tableColumn}
+                >
+                  <td>{languageStatistic.language}</td>
+                  <td>{languageStatistic.count}</td>
+                </tr>
+              )
+            )}
           </table>
         </div>
       </div>

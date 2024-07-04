@@ -29,6 +29,8 @@ export function ListContacts() {
     ageFilter,
     birthdayMonthFilter,
     filteredContacts,
+    filteredGenderStatistics,
+    filteredLanguageStatistics,
     genderFilter,
     languageFilter,
     setAgeFilter,
@@ -40,7 +42,9 @@ export function ListContacts() {
   const navigate = useNavigate();
 
   function handleGoStatistics() {
-    navigate("/showstatistics");
+    navigate("/showstatistics", {
+      state: { filteredGenderStatistics, filteredLanguageStatistics },
+    });
   }
 
   return (

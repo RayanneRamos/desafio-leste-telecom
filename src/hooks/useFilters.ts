@@ -1,7 +1,18 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useMemo, useState } from "react";
 import { ListContactProps } from "../pages/ListContacts";
 import { calculateAge } from "../utils/calculateAge";
 import { AGES } from "../utils/ages";
+
+interface GenderStatisticsProps {
+  gender: string;
+  genderCount: number;
+}
+
+interface LanguageStatisticsProps {
+  language: string;
+  count: number;
+}
 
 interface UseFiltersReturn {
   genderFilter: string;
@@ -13,6 +24,8 @@ interface UseFiltersReturn {
   birthdayMonthFilter: string;
   setBirthdayMonthFilter: (value: string) => void;
   filteredContacts: ListContactProps[];
+  filteredGenderStatistics: GenderStatisticsProps[];
+  filteredLanguageStatistics: LanguageStatisticsProps[];
   clearFilters: () => void;
 }
 
@@ -58,11 +71,47 @@ export function useFilters(contacts: ListContactProps[]): UseFiltersReturn {
     );
   };
 
-  const filteredContacts = contacts
-    .filter(filterByGender)
-    .filter(filterByLanguage)
-    .filter(filterByAge)
-    .filter(filterByBirthdayMonth);
+  const filteredContacts = useMemo(() => {
+    return contacts
+      .filter(filterByGender)
+      .filter(filterByLanguage)
+      .filter(filterByAge)
+      .filter(filterByBirthdayMonth);
+  }, [contacts, genderFilter, languageFilter, ageFilter, birthdayMonthFilter]);
+
+  const filteredGenderStatistics = useMemo(() => {
+    let maleCount = 0;
+    let femaleCount = 0;
+
+    filteredContacts.forEach((contact) => {
+      if (contact.gender === "Masculino") {
+        maleCount++;
+      } else if (contact.gender === "Feminino") {
+        femaleCount++;
+      }
+    });
+
+    return [
+      { gender: "Masculino", genderCount: maleCount },
+      { gender: "Feminino", genderCount: femaleCount },
+    ];
+  }, [filteredContacts]);
+
+  const filteredLanguageStatistics = useMemo(() => {
+    const languageStats: { [language: string]: number } = {};
+
+    filteredContacts.forEach((contact) => {
+      if (!languageStats[contact.language]) {
+        languageStats[contact.language] = 0;
+      }
+      languageStats[contact.language]++;
+    });
+
+    return Object.keys(languageStats).map((language) => ({
+      language,
+      count: languageStats[language],
+    }));
+  }, [filteredContacts]);
 
   const clearFilters = () => {
     setGenderFilter("");
@@ -80,6 +129,8 @@ export function useFilters(contacts: ListContactProps[]): UseFiltersReturn {
     setAgeFilter,
     birthdayMonthFilter,
     setBirthdayMonthFilter,
+    filteredGenderStatistics,
+    filteredLanguageStatistics,
     filteredContacts,
     clearFilters,
   };
