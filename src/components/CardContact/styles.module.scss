@@ -26,32 +26,32 @@
 .cardName {
   margin-top: 24px;
 
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 700;
 }
 
 .cardEmail {
   margin-top: 12px;
 
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .cardBirthday {
   margin-top: 12px;
 
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .cardGender {
   margin-top: 12px;
 
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .cardLanguage {
   margin-top: 12px;
 
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .buttonCardContainer {
@@ -76,7 +76,7 @@
   background-color: var(--curious-blue-600);
   color: var(--white);
 
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
 
   cursor: pointer;
@@ -84,7 +84,7 @@
   transition: all 0.4s;
 
   &:hover {
-    background-color: #0ca3eb;
+    background-color: var(--button-hover-edit);
   }
 }
 
@@ -102,7 +102,7 @@
   background-color: var(--cardinal-700);
   color: var(--white);
 
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
 
   cursor: pointer;
@@ -110,6 +110,6 @@
   transition: all 0.4s;
 
   &:hover {
-    background-color: #f60842;
+    background-color: var(--button-hover-cancel);
   }
 }
