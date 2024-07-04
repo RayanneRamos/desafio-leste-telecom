@@ -4,6 +4,7 @@ import { ListContacts } from "./pages/ListContacts";
 import { NewContact } from "./pages/NewContact";
 import { ContactProvider } from "./context/Contact";
 import { EditForm } from "./pages/EditForm";
+import { ShowStatistics } from "./pages/ShowStatistics";
 
 export function App() {
   return (
@@ -14,6 +15,7 @@ export function App() {
           <Route path="/addnewcontact" element={<NewContact />} />
           <Route path="/listcontact" element={<ListContacts />} />
           <Route path="/editform/:id" element={<EditForm />} />
+          <Route path="/showstatistics" element={<ShowStatistics />} />
         </Routes>
       </BrowserRouter>
     </ContactProvider>
