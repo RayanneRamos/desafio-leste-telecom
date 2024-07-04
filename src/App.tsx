@@ -5,6 +5,7 @@ import { NewContact } from "./pages/NewContact";
 import { ContactProvider } from "./context/Contact";
 import { EditForm } from "./pages/EditForm";
 import { ShowStatistics } from "./pages/ShowStatistics";
+import { NotFound } from "./pages/NotFound";
 
 export function App() {
   return (
@@ -16,6 +17,7 @@ export function App() {
           <Route path="/listcontact" element={<ListContacts />} />
           <Route path="/editform/:id" element={<EditForm />} />
           <Route path="/showstatistics" element={<ShowStatistics />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ContactProvider>
